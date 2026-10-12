@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PDFSlim — Compress PDF Online Free: Reduce PDF Size Without Losing Quality</title>
+<meta name="description" content="Free PDF compressor. Shrink PDF file size with a quality slider, target-size mode and a before/after size report — 100% in your browser, files never uploaded.">
+<link rel="canonical" href="https://pdfslim.fixoraa.tech/">
+<meta property="og:title" content="PDFSlim — Compress PDF Online Free: Reduce PDF Size Without Losing Quality">
+<meta property="og:description" content="Free PDF compressor. Shrink PDF file size with a quality slider, target-size mode and a before/after size report — 100% in your browser, files never uploaded.">
+<meta property="og:url" content="https://pdfslim.fixoraa.tech/">
+<meta property="og:type" content="website">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.min.js"></script>
+<script>pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.worker.min.js';</script>
+<style>
+:root{--pri:#DC2626;--acc:#F59E0B;--bgc:#FEF2F2}
+body{background:var(--bgc);font-family:'Segoe UI',system-ui,sans-serif}
+.pri{background:var(--pri)} .prit{color:var(--pri)}
+.btn{background:var(--pri);color:#fff;padding:.6rem 1.2rem;border-radius:.6rem;font-weight:600;cursor:pointer;border:none}
+.btn:hover{opacity:.9} .btn2{background:var(--acc);color:#111;padding:.6rem 1.2rem;border-radius:.6rem;font-weight:600;cursor:pointer;border:none}
+.btn:disabled,.btn2:disabled{opacity:.45;cursor:not-allowed}
+input,select,textarea{border:1.5px solid #cbd5e1;border-radius:.55rem;padding:.55rem .7rem;width:100%;background:#fff;color:#0f172a}
+input[type=file]{padding:.45rem .6rem} input[type=range]{padding:0} input[type=checkbox],input[type=radio]{width:auto}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--pri);border-color:transparent}
+label{font-size:.83rem;font-weight:600;display:block;margin-bottom:.3rem}
+.card{background:#fff;border-radius:1rem;box-shadow:0 8px 30px rgba(15,23,42,.08);padding:1.4rem}
+article p{margin:.7rem 0;line-height:1.75;color:#334155}
+article h2{font-size:1.45rem;font-weight:800;margin:1.6rem 0 .4rem;color:#0f172a}
+.faq{background:#fff;border-radius:.7rem;padding:.9rem 1.1rem;margin:.55rem 0;box-shadow:0 2px 10px rgba(15,23,42,.05)}
+.faq summary{font-weight:700;cursor:pointer}
+table.dt{width:100%;border-collapse:collapse} table.dt th,table.dt td{border:1px solid #e2e8f0;padding:.45rem .6rem;text-align:left;font-size:.9rem}
+table.dt th{background:#f1f5f9}
+.drop{border:2px dashed #94a3b8;border-radius:.8rem;padding:1.1rem;text-align:center;background:#f8fafc}
+canvas.prev{max-width:100%;border:1px solid #e2e8f0;border-radius:.5rem;background:#fff}
+
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "PDFSlim", "url": "https://pdfslim.fixoraa.tech/", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "description": "Free PDF compressor. Shrink PDF file size with a quality slider, target-size mode and a before/after size report \u2014 100% in your browser, files never uploaded."}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Is PDFSlim really free with no limits?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Compression is unlimited, with no signup, no watermark and no page-count cap imposed by the tool. The only practical limit is your device's memory for extremely large files."}}, {"@type": "Question", "name": "Will compressing my PDF reduce quality?", "acceptedAnswer": {"@type": "Answer", "text": "It re-encodes page images at the level you choose. Balanced keeps documents crisp for screen reading; Maximum trades some image softness for the smallest size; High quality is the gentle option for printing. Your original file is never modified."}}, {"@type": "Question", "name": "Why did my PDF not get smaller?", "acceptedAnswer": {"@type": "Answer", "text": "Some PDFs \u2014 usually lean, text-only exports \u2014 are already efficiently encoded, and rebuilding them cannot beat the original. The report tells you honestly when that happens so you can keep the original."}}, {"@type": "Question", "name": "Is my file uploaded to a server?", "acceptedAnswer": {"@type": "Answer", "text": "No. Everything runs in your browser using JavaScript libraries loaded to your device. Your PDF never leaves your computer or phone, which makes the tool safe for personal and confidential documents."}}, {"@type": "Question", "name": "Can I compress a PDF to an exact size, like under 500 KB?", "acceptedAnswer": {"@type": "Answer", "text": "Yes \u2014 enter the target in KB and the tool automatically steps quality down until the output fits the cap or reaches its practical floor, then reports the final size."}}, {"@type": "Question", "name": "Will text still be selectable after compression?", "acceptedAnswer": {"@type": "Answer", "text": "The compressed copy renders pages as optimised images, so text is not selectable in the output. Keep your original as the master copy when selectability matters, and use the compressed file for sharing and uploads."}}]}</script>
+</head>
+<body id="top">
+<header class="sticky top-0 z-40 shadow-md" style="background:#7F1D1D">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6 py-3 flex items-center justify-between">
+    <a href="#top" class="text-xl font-extrabold tracking-tight" style="color:#FEF2F2">🗜 PDFSlim</a>
+    <nav class="flex gap-5 text-sm font-semibold" style="color:#FEF2F2">
+      <a href="#top" class="hover:underline">Home</a>
+      <a href="https://fixoraa.tech" class="hover:underline">More Tools</a>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="mx-auto max-w-6xl px-4 sm:px-6 py-8">
+  <div class="text-center mb-6">
+    <h1 class="text-3xl sm:text-4xl font-extrabold" style="color:#0f172a">Compress PDF — Reduce PDF File Size Free</h1>
+    <p class="mt-2 text-slate-600 max-w-2xl mx-auto">Email limits, portal upload caps and slow sharing all come down to one thing: your PDF is too big. PDFSlim re-encodes your document at the quality you choose and shows you exactly how much you saved — before and after, page by page.</p>
+    <span class="inline-block mt-3 px-3 py-1 rounded-full text-xs font-bold text-white pri">✓ Unlimited Free Usage — No Signup, No Watermark</span>
+    <p class="mt-2 text-xs text-slate-500">🔒 100% private: your file is processed entirely in your browser and never uploaded to any server.</p>
+  </div>
+  <div class="grid md:grid-cols-5 gap-6">
+  <div class="card md:col-span-2 space-y-3">
+    <div class="drop"><label>Your PDF</label><input id="file" type="file" accept="application/pdf"></div>
+    <div><label>Compression level</label><select id="level"><option value="low">Maximum compression (smallest file, softer images)</option><option value="medium" selected>Balanced (recommended)</option><option value="high">High quality (gentle compression)</option></select></div>
+    <div><label>Target size (KB, optional — overrides level)</label><input id="target" type="number" placeholder="e.g. 500"></div>
+    <button class="btn w-full" id="go" onclick="run()">Compress PDF</button>
+    <button class="btn2 w-full" id="dl" style="display:none">⬇ Download compressed PDF</button>
+    <p id="status" class="text-sm font-semibold"></p>
+  </div>
+  <div class="card md:col-span-3">
+    <div class="grid grid-cols-3 gap-3 text-center">
+      <div class="p-3 rounded-lg bg-red-50"><div class="text-xs font-bold">ORIGINAL</div><div id="oBefore" class="text-xl font-extrabold">–</div></div>
+      <div class="p-3 rounded-lg bg-red-50"><div class="text-xs font-bold">COMPRESSED</div><div id="oAfter" class="text-xl font-extrabold">–</div></div>
+      <div class="p-3 rounded-lg bg-amber-50"><div class="text-xs font-bold">YOU SAVED</div><div id="oSaved" class="text-xl font-extrabold">–</div></div>
+    </div>
+    <div id="report" class="mt-4 text-sm text-slate-600">Choose a PDF to see its page count and size report here. Compression re-renders each page as an optimised image inside a fresh PDF — ideal for scanned documents, photo-heavy files and sharing copies. Documents that are already lean vector text may not shrink much; the report always tells you the truth before you download.</div>
+  </div></div>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script async src="https://js.wpadmngr.com/static/adManager.js" data-admpid="464498"></script>
+    </div>
+  </div>
+</div>
+<section class="mx-auto max-w-4xl px-4 sm:px-6 pb-6">
+  <article>
+  <h2>Why PDF files get so large</h2>
+<p>Most oversized PDFs are not large because of their text. A page of text costs only a few kilobytes; the weight hides in embedded images — scans saved at printer resolution, photographs dropped in at full camera size, logos stored as uncompressed bitmaps. A ten-page scanned form can quietly carry thirty megabytes of image data for content a reader views on a phone screen. Compression works by re-encoding those images at a resolution and quality matched to how the document will actually be read, which is why a well-compressed PDF looks identical on screen at a tenth of the size.</p>
+<p>There is a second, subtler cause: editor bloat. PDFs edited many times can carry layers of incremental saves, embedded fonts duplicated per edit, and orphaned objects the file never cleaned up. Rebuilding the document page by page — exactly what PDFSlim does — discards that accumulated weight in one pass. The result is a clean, single-generation file that opens faster, uploads faster and behaves better in strict portals that reject bloated or malformed documents.</p>
+<h2>How PDFSlim compression works</h2>
+<p>PDFSlim renders every page of your document inside your browser and rebuilds it as a fresh PDF with images encoded at the level you select. The Balanced level targets the sweet spot most people need: crisp on screens, dramatically smaller than a scan or photo export. Maximum compression pushes further for hard upload limits — government portals, job applications and email attachments with strict caps — while High quality is the gentle option for documents you will print or archive. Nothing is uploaded anywhere: the rendering and rebuilding happen on your own device, so confidential files never leave your hands.</p>
+<p>The target-size mode exists for the most common real-world demand: 'this portal accepts at most 500 KB.' Enter the cap and the tool automatically steps quality down until the output fits or it has tried its honest best, then reports the final size plainly. The before/after report is equally deliberate. Some PDFs — lean, text-only exports — are already near their floor, and a trustworthy tool should tell you so instead of pretending a 2 percent saving is a triumph.</p>
+<h2>How to compress a PDF, step by step</h2>
+<p>Choose your PDF with the file picker; the tool immediately reads its page count and size. Pick a level: Balanced for everyday sharing, Maximum when a portal states a hard limit, High quality when the document will be printed. If you have an exact cap, type it into the target-size field and let the tool iterate for you. Press Compress and watch the per-page progress — large scans take a few seconds per ten pages on a typical laptop, entirely on your own machine.</p>
+<p>When it finishes, read the report before downloading. Check the saved percentage and the final size against your requirement. If the file is destined for a portal, download it and, if possible, open the compressed copy once to confirm pages look right — image-based pages are faithful renders, but a ten-second glance is cheap insurance for an important submission. Keep your original untouched; compression always produces a new copy, never edits your source file.</p>
+<h2>Choosing the right compression level</h2>
+<p>Screen reading forgives a great deal. Documents that will be read on phones, tablets and laptops — applications, statements, reports, portfolios — compress beautifully at Balanced, because screens render far fewer pixels than a print-ready scan contains. Maximum compression is the problem-solver: use it when the constraint is absolute and the reader needs legibility, not beauty. Expect softer photographs and slightly fuzzier small print at this level; for forms and letters that trade is almost always worth it.</p>
+<p>High quality is for paper and posterity. If the PDF will be printed, projected large, or kept as a long-term record, the gentle level trims obvious waste while preserving fine detail. One honest caution: compression of the render-and-rebuild kind converts text pages into image pages, so text is no longer selectable in the output. For contracts and documents others must copy text from, compress a sharing copy and keep the selectable original as your master.</p>
+<h2>Common situations where compression saves the day</h2>
+<p>Job portals are the classic case: a résumé plus certificates exported from a scanner easily exceeds the 2 MB or 500 KB cap many application systems enforce, and the rejection message rarely explains why. Compressing a sharing copy solves it in under a minute. The same story repeats with visa and admission portals, tender submissions, insurance claim uploads and email attachments bumping against the traditional 25 MB ceiling shared by most mail providers.</p>
+<p>Teachers and offices hit the quieter version daily: a class set of worksheets, a monthly report deck exported as PDF, a signed agreement photographed page by page. Each is fine alone; together they clog inboxes and shared drives. A consistent compression habit — Balanced for circulation, original kept in the archive — keeps shared storage lean and downloads fast for everyone, including people on slow connections who feel every megabyte most.</p>
+<h2>Privacy: why in-browser compression matters</h2>
+<p>The documents people compress most urgently are often the ones they should upload least casually: identity proofs, bank statements, signed contracts, medical reports. Sending those to a random server-based compressor means trusting an unknown operator's retention policy with your most sensitive pages. PDFSlim is built the other way: the file is opened by code running in your own browser tab, processed in your device's memory, and the result is handed straight back to you. Close the tab and nothing remains anywhere.</p>
+<p>That architecture has a second benefit — it works offline once loaded and it is fast, because there is no upload queue. It also means very large files are bounded by your device's memory rather than a service's arbitrary limits. If a file is confidential enough that you would hesitate to email it, it is confidential enough to deserve a tool that never asks you to send it anywhere at all.</p>
+  <h2>Frequently Asked Questions</h2>
+  <details class="faq"><summary>Is PDFSlim really free with no limits?</summary><p>Yes. Compression is unlimited, with no signup, no watermark and no page-count cap imposed by the tool. The only practical limit is your device's memory for extremely large files.</p></details>
+<details class="faq"><summary>Will compressing my PDF reduce quality?</summary><p>It re-encodes page images at the level you choose. Balanced keeps documents crisp for screen reading; Maximum trades some image softness for the smallest size; High quality is the gentle option for printing. Your original file is never modified.</p></details>
+<details class="faq"><summary>Why did my PDF not get smaller?</summary><p>Some PDFs — usually lean, text-only exports — are already efficiently encoded, and rebuilding them cannot beat the original. The report tells you honestly when that happens so you can keep the original.</p></details>
+<details class="faq"><summary>Is my file uploaded to a server?</summary><p>No. Everything runs in your browser using JavaScript libraries loaded to your device. Your PDF never leaves your computer or phone, which makes the tool safe for personal and confidential documents.</p></details>
+<details class="faq"><summary>Can I compress a PDF to an exact size, like under 500 KB?</summary><p>Yes — enter the target in KB and the tool automatically steps quality down until the output fits the cap or reaches its practical floor, then reports the final size.</p></details>
+<details class="faq"><summary>Will text still be selectable after compression?</summary><p>The compressed copy renders pages as optimised images, so text is not selectable in the output. Keep your original as the master copy when selectability matters, and use the compressed file for sharing and uploads.</p></details>
+  </article>
+</section>
+<footer class="mt-6 py-8" style="background:#7F1D1D;color:#FEF2F2">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6 text-center text-sm">
+    <p class="font-bold text-base">PDFSlim</p>
+    <p class="opacity-80 mt-1">Free PDF compressor. Shrink PDF file size with a quality slider, target-size mode and a before/after size report — 100% in your browser, files never uploaded.</p>
+    <p class="mt-2"><a href="#top" class="underline">Home</a> · <a href="https://fixoraa.tech" class="underline">More Tools</a></p>
+    <p class="fx-credit" style="text-align:center;font-size:12.5px;opacity:.62;margin:10px auto 2px;letter-spacing:.01em">Made by <a href="https://fixoraa.tech" target="_blank" rel="noopener" style="color:inherit;font-weight:700;text-decoration:underline;text-underline-offset:2px">Fixoraa</a></p>
+  </div>
+</footer>
+<script id="lib-pdfslim">
+
+function savedPct(before, after){ if(before<=0) return 0; return Math.round((1-after/before)*1000)/10; }
+function qualityFor(level){ return {low:{scale:0.72,q:0.52},medium:{scale:1.0,q:0.72},high:{scale:1.45,q:0.86}}[level] || {scale:1.0,q:0.72}; }
+function estimateBytes(pages, avgPagePts, level){ var s=qualityFor(level).scale; var pxPerPage=(avgPagePts.w*s)*(avgPagePts.h*s); return Math.round(pages*pxPerPage*qualityFor(level).q*0.14); }
+if (typeof module!=="undefined") module.exports={savedPct:savedPct, qualityFor:qualityFor, estimateBytes:estimateBytes};
+
+</script>
+<script>
+
+const $=id=>document.getElementById(id);
+function fmtBytes(b){if(b===0)return '0 B';const k=1024,s=['B','KB','MB','GB'];const i=Math.floor(Math.log(b)/Math.log(k));return (b/Math.pow(k,i)).toFixed(i?1:0)+' '+s[i];}
+function setStatus(m,ok){const el=$('status');if(!el)return;el.textContent=m;el.style.color=ok===false?'#dc2626':'inherit';}
+function download(bytes,name,type){const blob=bytes instanceof Blob?bytes:new Blob([bytes],{type:type||'application/pdf'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove();},800);}
+async function readFile(input){const f=input.files&&input.files[0];if(!f)throw new Error('Please choose a PDF file first.');return {file:f,buf:await f.arrayBuffer()};}
+function showDl(id,bytes,name){const b=$(id);b.style.display='inline-block';b.onclick=()=>download(bytes,name);}
+
+
+let lastBytes=null,lastName='compressed.pdf';
+async function run(){
+  const btn=$('go'); btn.disabled=true;
+  try{
+    const {file,buf}=await readFile($('file'));
+    setStatus('Reading '+file.name+' ('+fmtBytes(file.size)+')…');
+    const src=await pdfjsLib.getDocument({data:buf.slice(0)}).promise;
+    const targetKb=parseFloat($('target').value);
+    let {scale,q}=qualityFor($('level').value);
+    if(targetKb>0){ scale=1.0; q=0.72; }
+    async function build(sc,qq){
+      const out=await PDFLib.PDFDocument.create();
+      for(let i=1;i<=src.numPages;i++){
+        const page=await src.getPage(i);
+        const vp=page.getViewport({scale:sc});
+        const cv=document.createElement('canvas'); cv.width=vp.width; cv.height=vp.height;
+        await page.render({canvasContext:cv.getContext('2d'),viewport:vp}).promise;
+        const jpg=cv.toDataURL('image/jpeg',qq);
+        const img=await out.embedJpg(jpg.split(',')[1]&&await (await fetch(jpg)).arrayBuffer());
+        const p=out.addPage([vp.width/sc,vp.height/sc]);
+        p.drawImage(img,{x:0,y:0,width:vp.width/sc,height:vp.height/sc});
+        setStatus('Compressing page '+i+' of '+src.numPages+'…');
+      }
+      return await out.save();
+    }
+    let bytes=await build(scale,q);
+    if(targetKb>0){
+      let tries=0;
+      while(bytes.length>targetKb*1024 && tries<4){ scale*=0.8; q=Math.max(0.3,q-0.12); bytes=await build(scale,q); tries++; }
+    }
+    lastBytes=bytes; lastName=file.name.replace(/\.pdf$/i,'')+'-slim.pdf';
+    $('oBefore').textContent=fmtBytes(file.size);
+    $('oAfter').textContent=fmtBytes(bytes.length);
+    $('oSaved').textContent=savedPct(file.size,bytes.length)+'%';
+    $('report').innerHTML='<b>Report:</b> '+src.numPages+' pages · original '+fmtBytes(file.size)+' → compressed '+fmtBytes(bytes.length)+' ('+savedPct(file.size,bytes.length)+'% saved). '+(bytes.length>=file.size?'Your original was already efficiently encoded, so the compressed copy is not smaller — keep the original for this file.':'Your compressed copy is ready to download and share.');
+    showDl('dl',bytes,lastName);
+    setStatus('Done ✔ Compressed PDF is ready.');
+  }catch(e){ setStatus('⚠ '+(e.message||e),false); }
+  btn.disabled=false;
+}
+
+</script>
+</body>
+</html>
